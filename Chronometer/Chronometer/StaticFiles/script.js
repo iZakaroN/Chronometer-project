@@ -60,18 +60,25 @@ function ResetTimer(element) {
 
 var AddHtmlTags = () => {
     document.body.innerHTML +=
-        `<div>
+        `<div id="wrap${counter}">
             <p id="timer-info-paragraph${counter}">
                 <span id="minutes${counter}">00</span> :
                 <span id="seconds${counter}">00</span> :
                 <span id="miliseconds${counter}">0</span>
-            </p >
+            </p>
             <button id="main-button-id${counter}" data-cid=${counter} class="start-button" onclick="StartOrStopTimer(this)"></button>
             <button id="reset-button-id${counter}" data-cid=${counter} class="reset-button" onclick="ResetTimer(this)">Reset</button>
-        </div >`;
+            <button id="remove-button-id${counter}" data-cid=${counter} class="reset-button" onclick="RemoveTimer(this)">Remove</button>
+        </div>`;
 
     timersDictionary[counter] = new easytimer.Timer();
 
     RefreshTimerValues(timersDictionary[counter], counter);
     counter++;
+}
+
+var RemoveTimer = (element) => {
+    element.parentNode.remove();
+    timersDictionary[element.dataset.cid].stop();
+    delete timersDictionary[element.dataset.cid];
 }
