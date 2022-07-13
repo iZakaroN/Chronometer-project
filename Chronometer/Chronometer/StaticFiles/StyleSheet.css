@@ -3,7 +3,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 700px;
     animation: changeColor 20s infinite;
     animation-direction: alternate;
 }
@@ -41,6 +40,17 @@
     justify-content: center;
     width: 100px;
     height: 30px;
+    margin-top: 10px;
+}
+
+.add-timer-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
 }
 
 
@@ -55,6 +65,7 @@
     justify-content: center;
     width: 100px;
     height: 30px;
+    margin-top: 10px;
 }
 
 .reset-button {
@@ -64,6 +75,7 @@
     justify-content: center;
     width: 100px;
     height: 30px;
+    margin-top: 10px;
 }
 
 .stop-button::after {
