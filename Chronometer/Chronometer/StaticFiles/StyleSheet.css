@@ -33,58 +33,233 @@
     }
 }
 
+.mega-wrap {
+    display: flex;
+    flex-direction: row;
+    width: 900px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.all-timer-info-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 8px 8px 8px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-right: 25px;
+    margin-left: 25px;
+    border: solid 2px black;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    animation: createElement 1s;
+    animation-direction: alternate;
+}
+@keyframes createElement {
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+}
+
 .start-button {
+    border: none;
+    border-radius: 4px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 100px;
     height: 30px;
-    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    transition: 0.2s;
 }
+.start-button:hover {
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+.start-button::after {
+    content: 'Start';
+}
+.start-button::before {
+    display: none;
+    content: "▶";
+}
+.start-button:hover::before {
+    animation: BeforeAnimation 0.7s;
+    display: block;
+}
+.start-button:not(:hover)::before {
+    animation: BeforeAnimationEnd 0.7s;
+    display: block;
+    width: 0;
+    color: rgba(0, 0, 0, 0);
+}
+
+
+@keyframes BeforeAnimation {
+    from {
+        width: 0;
+        color: rgba(0, 0, 0, 0);
+    }
+    to {
+        width: 11px;
+        color: rgba(0, 0, 0);
+    }
+}
+@keyframes BeforeAnimationEnd {
+    from {
+        width: 11px;
+        color: rgba(0, 0, 0);
+    }
+    to {
+        width: 0;
+        color: rgba(0, 0, 0, 0);
+    }
+}
+
 
 .add-timer-button {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 100px;
-    height: 30px;
+    width: 110px;
+    height: 45px;
     margin-top: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.add-timer-button:hover {
+    background-color: rgba(255, 255, 255);
 }
 
-
-.start-button::after {
-    content: 'Start';
-}
 
 .stop-button {
+    border: none;
+    border-radius: 4px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 100px;
     height: 30px;
-    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    transition: 0.2s;
 }
-
-.reset-button {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    height: 30px;
-    margin-top: 10px;
+.stop-button:hover {
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
 }
-
 .stop-button::after {
     content: 'Stop';
+}
+.stop-button::before {
+    display: none;
+    content: "■";
+    animation-direction: alternate;
+}
+.stop-button:hover::before {
+    animation: BeforeAnimation 0.7s;
+    display: block;
+    font-size: 18px;
+    padding-bottom: 5px;
+}
+.stop-button:not(:hover)::before {
+    animation: BeforeAnimationEnd 0.7s;
+    display: block;
+    width: 0;
+    color: rgba(0, 0, 0, 0);
+    font-size: 18px;
+    padding-bottom: 5px;
+}
+
+
+.reset-button {
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    transition: 0.2s;
+}
+.reset-button:hover {
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+.reset-button::before {
+    display: none;
+    content: "⟳";
+    animation-direction: alternate;
+}
+.reset-button:hover::before {
+    animation: BeforeAnimation 0.7s;
+    font-weight: bolder;
+    display: block;
+    font-size: 11.5px;
+}
+.reset-button:not(:hover)::before {
+    animation: BeforeAnimationEnd 0.7s;
+    font-weight: bolder;
+    display: block;
+    width: 0;
+    color: rgba(0, 0, 0, 0);
+    font-size: 11.5px;
+}
+
+
+.remove-button {
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    transition: 0.2s;
+}
+.remove-button:hover {
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+.remove-button::before {
+    display: none;
+    content: "⤬";
+    animation-direction: alternate;
+}
+.remove-button:hover::before {
+    animation: BeforeAnimation 0.7s;
+    font-weight: bolder;
+    display: block;
+    font-size: 15px;
+}
+.remove-button:not(:hover)::before {
+    animation: BeforeAnimationEnd 0.7s;
+    font-weight: bolder;
+    display: block;
+    width: 0;
+    color: rgba(0, 0, 0, 0);
+    font-size: 15px;
 }
 
 
 p {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 30px;
     border: 2px solid black;
     border-radius: 5px;
@@ -92,4 +267,6 @@ p {
     padding-bottom: 3px;
     padding-left: 7px;
     padding-right: 7px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
 }

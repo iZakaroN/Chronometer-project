@@ -59,17 +59,21 @@ function ResetTimer(element) {
 }
 
 var AddHtmlTags = () => {
-    document.body.innerHTML +=
-        `<div id="wrap${counter}">
-            <p id="timer-info-paragraph${counter}">
+    var div = document.createElement('div');
+    div.setAttribute('id', `wrap${counter}`);
+    div.setAttribute('class', `all-timer-info-wrap`);
+
+    div.innerHTML = `<p id="timer-info-paragraph${counter}">
                 <span id="minutes${counter}">00</span> :
                 <span id="seconds${counter}">00</span> :
                 <span id="miliseconds${counter}">0</span>
             </p>
             <button id="main-button-id${counter}" data-cid=${counter} class="start-button" onclick="StartOrStopTimer(this)"></button>
             <button id="reset-button-id${counter}" data-cid=${counter} class="reset-button" onclick="ResetTimer(this)">Reset</button>
-            <button id="remove-button-id${counter}" data-cid=${counter} class="reset-button" onclick="RemoveTimer(this)">Remove</button>
-        </div>`;
+            <button id="remove-button-id${counter}" data-cid=${counter} class="remove-button" onclick="RemoveTimer(this)">Remove</button>
+        `;
+
+    document.querySelector('.mega-wrap').appendChild(div);
 
     timersDictionary[counter] = new easytimer.Timer();
 
