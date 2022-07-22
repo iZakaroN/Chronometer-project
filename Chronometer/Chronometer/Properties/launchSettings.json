@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "StaticFiles/ChronoIndex.html",
+      "launchUrl": "StaticFiles/Chronoindex.html",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

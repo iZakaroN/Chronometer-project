@@ -27,3 +27,8 @@ C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronom
 C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer\obj\Debug\net5.0\ref\Chronometer.dll
 C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer\obj\Debug\net5.0\Chronometer.pdb
 C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer\obj\Debug\net5.0\Chronometer.genruntimeconfig.cache
+C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer\bin\Debug\net5.0\Microsoft.Extensions.PlatformAbstractions.dll
+C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer\bin\Debug\net5.0\Nancy.dll
+C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer\bin\Debug\net5.0\Newtonsoft.Json.dll
