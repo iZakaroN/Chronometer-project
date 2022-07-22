@@ -70,8 +70,8 @@ function StartOrStopTimer(element) {
         });
     }
 }
-/*
-function ResetTimer(element) {
+
+/*function ResetTimer(element) {
     let currentIdNum = element.dataset.cid;
     let timer = timersDictionary[currentIdNum];
     let minutesElement = document.querySelector(`#minutes${currentIdNum}`);
@@ -101,7 +101,7 @@ var AddChronometerUI = (chronometer) => {
     div.innerHTML = `<p id="timer-info-paragraph${chronometer.id}">
                 <span id="minutes${chronometer.id}">${String(chronometer.timer.minutes).padStart(2, '0')}</span> :
                 <span id="seconds${chronometer.id}">${String(chronometer.timer.seconds).padStart(2, '0')}</span> :
-                <span id="miliseconds${chronometer.id}">${String(chronometer.timer.milliseconds).padStart(1, '0')}</span>
+                <span id="miliseconds${chronometer.id}">${String(chronometer.timer.milliseconds / 100)}</span>
             </p>
             <button id="main-button-id${chronometer.id}" data-cid=${chronometer.id} class="start-button" onclick="StartOrStopTimer(this)"></button>
             <button id="reset-button-id${chronometer.id}" data-cid=${chronometer.id} class="reset-button" onclick="ResetTimer(this)">Reset</button>
@@ -110,21 +110,13 @@ var AddChronometerUI = (chronometer) => {
 
     document.querySelector('.mega-wrap').appendChild(div);
 
-    let tenths = String(chronometer.timer.milliseconds);
-
-    if (tenths.length == 3) {
-        tenths = String(chronometer.timer.milliseconds).charAt(0);
-    } else {
-        tenths = 0;
-    }
-
     var eTimer = new easytimer.Timer({
         startValues: {
             days: 0,
             hours: 0,
             minutes: chronometer.timer.minutes,
             seconds: chronometer.timer.seconds,
-            secondTenths: Number(tenths)
+            secondTenths: chronometer.timer.milliseconds / 100
         }
     });
 
