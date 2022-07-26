@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chronometer", "Chronometer\Chronometer.csproj", "{75859C5B-CF11-4CBC-98F5-5F3FB69E8BDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chronometer", "Chronometer\Chronometer.csproj", "{75859C5B-CF11-4CBC-98F5-5F3FB69E8BDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chronometer.Tests", "Chronometer.Tests\Chronometer.Tests.csproj", "{CFE5624C-B2F6-45EF-AE42-B6DAC993EA7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{75859C5B-CF11-4CBC-98F5-5F3FB69E8BDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75859C5B-CF11-4CBC-98F5-5F3FB69E8BDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75859C5B-CF11-4CBC-98F5-5F3FB69E8BDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFE5624C-B2F6-45EF-AE42-B6DAC993EA7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFE5624C-B2F6-45EF-AE42-B6DAC993EA7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFE5624C-B2F6-45EF-AE42-B6DAC993EA7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFE5624C-B2F6-45EF-AE42-B6DAC993EA7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

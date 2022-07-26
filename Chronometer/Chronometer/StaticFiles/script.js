@@ -8,6 +8,7 @@ function RefreshTimerValues(timer, chronoId) {
         let milisecondsElement = document.querySelector(`#miliseconds${chronoId}`);
 
         const obj = timer.getTimeValues();
+
         minutesElement.innerText = String(obj.minutes).padStart(2, '0');
         secondsElement.innerText = String(obj.seconds).padStart(2, '0');
         milisecondsElement.innerText = String(obj.secondTenths);
@@ -23,8 +24,16 @@ function StartOrStopTimer(element) {
 
         element.classList.remove('start-button');
         element.classList.add('stop-button');
+
         timer.start({
-            precision: 'secondTenths'
+            precision: 'secondTenths',
+            startValues: {
+                days: 0,
+                hours: 0,
+                minutes: timer.getTimeValues().minutes,
+                seconds: timer.getTimeValues().seconds,
+                secondTenths: timer.getTimeValues().secondTenths
+            }
         });
 
         let chronometerModel = {
@@ -71,7 +80,7 @@ function StartOrStopTimer(element) {
     }
 }
 
-/*function ResetTimer(element) {
+function ResetTimer(element) {
     let currentIdNum = element.dataset.cid;
     let timer = timersDictionary[currentIdNum];
     let minutesElement = document.querySelector(`#minutes${currentIdNum}`);
@@ -83,15 +92,33 @@ function StartOrStopTimer(element) {
     timer.reset();
     timer.stop();
 
+    let chronometerModel = {
+        ID: currentIdNum,
+        Timer: {
+            minutes: timer.getTimeValues().minutes,
+            seconds: timer.getTimeValues().seconds,
+            milliseconds: timer.getTimeValues().secondTenths
+        },
+        IsRunning: false
+    }
+
+    fetch('https://localhost:44346/api/Chronometer/' + currentIdNum, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(chronometerModel)
+    });
+
     if (main_button.className == 'stop-button') {
         main_button.classList.remove('stop-button');
         main_button.classList.add('start-button');
     }
 
-    minutesElement.innerText = '00';
-    secondsElement.innerText = '00';
-    milisecondsElement.innerText = '0';
-}*/
+    minutesElement.innerText = String(timer.getTimeValues().minutes).padStart(2, '0');
+    secondsElement.innerText = String(timer.getTimeValues().seconds).padStart(2, '0');
+    milisecondsElement.innerText = String(timer.getTimeValues().secondTenths).padStart(2, '0').substring(0, 1);
+}
 
 var AddChronometerUI = (chronometer) => {
     var div = document.createElement('div');
@@ -101,7 +128,7 @@ var AddChronometerUI = (chronometer) => {
     div.innerHTML = `<p id="timer-info-paragraph${chronometer.id}">
                 <span id="minutes${chronometer.id}">${String(chronometer.timer.minutes).padStart(2, '0')}</span> :
                 <span id="seconds${chronometer.id}">${String(chronometer.timer.seconds).padStart(2, '0')}</span> :
-                <span id="miliseconds${chronometer.id}">${String(chronometer.timer.milliseconds / 100)}</span>
+                <span id="miliseconds${chronometer.id}">${String(chronometer.timer.milliseconds)}</span>
             </p>
             <button id="main-button-id${chronometer.id}" data-cid=${chronometer.id} class="start-button" onclick="StartOrStopTimer(this)"></button>
             <button id="reset-button-id${chronometer.id}" data-cid=${chronometer.id} class="reset-button" onclick="ResetTimer(this)">Reset</button>
@@ -116,7 +143,7 @@ var AddChronometerUI = (chronometer) => {
             hours: 0,
             minutes: chronometer.timer.minutes,
             seconds: chronometer.timer.seconds,
-            secondTenths: chronometer.timer.milliseconds / 100
+            secondTenths: chronometer.timer.milliseconds
         }
     });
 
