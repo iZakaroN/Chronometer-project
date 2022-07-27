@@ -17,7 +17,7 @@ namespace Chronometer.Tests
         }
 
         [Test]
-        public void Changing_Chronometer_Works()
+        public void Changing_Chronometer_Check_IsRunning()
         {
             _controller.Post();
             _controller.Post();
@@ -29,7 +29,7 @@ namespace Chronometer.Tests
         }
 
         [Test]
-        public void Changing_Chronometer_Throws()
+        public void Changing_Chronometer_Throws_Exception()
         {
             _controller.Post();
             _controller.Post();

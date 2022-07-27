@@ -27,17 +27,18 @@ namespace Chronometer.Tests
 
             // ASSERT
             Assert.IsNotNull(result);
+            Assert.IsFalse(result.IsRunning);
         }
         
         [Test]
         public void Adding_Multiple_Chronometers_Passes()
         {
-            // ACT
+            // ARRANGE
             _controller.Post();
             _controller.Post();
             _controller.Post();
 
-            // ASSERT
+            // ASSERT + ACT
             Assert.AreEqual(3, _controller.Get().Count());
         }
     }

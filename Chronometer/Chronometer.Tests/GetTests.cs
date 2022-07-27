@@ -26,10 +26,10 @@ namespace Chronometer.Tests
             ChronometerModel result;
 
             // ACT
-            result = _controller.Get(1);
+            result = _controller.Get(testModel.ID);
 
             // ASSERT
-            Assert.AreSame(testModel, result);
+            Assert.AreEqual(testModel.ID, result.ID);
         }
 
         [Test]

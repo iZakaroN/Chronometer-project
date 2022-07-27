@@ -32,3 +32,4 @@ C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronom
 C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer\bin\Debug\net5.0\Microsoft.Extensions.PlatformAbstractions.dll
 C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer\bin\Debug\net5.0\Nancy.dll
 C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer\bin\Debug\net5.0\web.config

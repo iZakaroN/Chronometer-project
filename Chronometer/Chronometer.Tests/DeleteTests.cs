@@ -17,19 +17,19 @@ namespace Chronometer.Tests
         }
 
         [Test]
-        public void Deleting_Chronometer_Works() 
+        public void Deleting_Chronometer_Validate()
         {
-            _controller.Post();
+            var test = _controller.Post();
             _controller.Post();
             _controller.Post();
 
-            _controller.Delete(1);
+            _controller.Delete(test.ID);
 
             Assert.AreEqual(2, _controller.Get().Count());
         }
 
         [Test]
-        public void Deleting_Chronometer_Throws() 
+        public void Deleting_Chronometer_Throws_Exception()
         {
             _controller.Post();
             _controller.Post();

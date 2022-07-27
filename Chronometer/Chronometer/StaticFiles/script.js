@@ -1,4 +1,5 @@
 ﻿var timersDictionary = {};
+const route = "../api/chronometer/";
 
 function RefreshTimerValues(timer, chronoId) {
     timer.addEventListener('secondTenthsUpdated', () => {
@@ -46,7 +47,7 @@ function StartOrStopTimer(element) {
             IsRunning: true
         }
 
-        fetch('https://localhost:44346/api/Chronometer/' + currentIdNum, {
+        fetch(route + currentIdNum, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -70,7 +71,7 @@ function StartOrStopTimer(element) {
             IsRunning: false
         }
 
-        fetch('https://localhost:44346/api/Chronometer/' + currentIdNum, {
+        fetch(route + currentIdNum, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -102,7 +103,7 @@ function ResetTimer(element) {
         IsRunning: false
     }
 
-    fetch('https://localhost:44346/api/Chronometer/' + currentIdNum, {
+    fetch(route + currentIdNum, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -165,7 +166,7 @@ var RemoveTimer = (element) => {
     element.parentNode.remove();
     timersDictionary[element.dataset.cid].stop();
     delete timersDictionary[element.dataset.cid];
-    fetch('https://localhost:44346/api/Chronometer/' + element.dataset.cid, {
+    fetch(route + element.dataset.cid, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -174,7 +175,7 @@ var RemoveTimer = (element) => {
 }
 
 async function CreateChronometer() {
-    let chronometerModel = await fetch('https://localhost:44346/api/Chronometer', {
+    let chronometerModel = await fetch(route, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -184,7 +185,7 @@ async function CreateChronometer() {
 }
 
 window.onload = async function GetChronometers() {
-    let chronometerData = await fetch('https://localhost:44346/api/Chronometer', {
+    let chronometerData = await fetch(route, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
