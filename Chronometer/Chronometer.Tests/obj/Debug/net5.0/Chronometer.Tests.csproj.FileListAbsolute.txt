@@ -116,3 +116,6 @@ C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronom
 C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer.Tests\obj\Debug\net5.0\ref\Chronometer.Tests.dll
 C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer.Tests\obj\Debug\net5.0\Chronometer.Tests.pdb
 C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer.Tests\obj\Debug\net5.0\Chronometer.Tests.genruntimeconfig.cache
+C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer.Tests\bin\Debug\net5.0\web.config
+C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer.Tests\bin\Debug\net5.0\libman.json
+C:\Users\Daniel Todorov\Documents\GitHub\Chronometer-project\Chronometer\Chronometer.Tests\bin\Debug\net5.0\lib\microsoft\signalr\package.json

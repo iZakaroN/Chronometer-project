@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace Chronometer.Hubs
 {
-    public class ChatHub : Hub
-    {
-        public async Task SendMessage(string message)
-        {
+    public interface IChronometerHub { }
 
-        }
+    public class ChatHub : Hub, IChronometerHub
+    {
+        public Task SendAddMessageAsync(int chronometerId)
+            => Clients.All.SendAsync("Add", chronometerId);
+        public Task SendUpdateMessageAsync(int chronometerId)
+            => Clients.All.SendAsync("Update", chronometerId);
+        public Task SendDeleteMessageAsync(int chronometerId)
+            => Clients.All.SendAsync("Delete", chronometerId);
     }
 }

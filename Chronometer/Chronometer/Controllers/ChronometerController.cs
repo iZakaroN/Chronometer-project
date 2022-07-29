@@ -1,8 +1,11 @@
-﻿using Chronometer.Models;
+﻿using Chronometer.Hubs;
+using Chronometer.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Chronometer.Controllers
 {
@@ -11,6 +14,13 @@ namespace Chronometer.Controllers
     public class ChronometerController : ControllerBase
     {
         private static readonly Dictionary<int, ChronometerService> _chronometerServices = new();
+        private readonly IHubContext<ChatHub> _chronometerHubContext;
+
+        public ChronometerController(IHubContext<ChatHub> chronometerHubContext)
+        {
+            _chronometerHubContext = chronometerHubContext;
+        }
+
         // GET: api/<ChronometerController>
         [HttpGet]
         public IEnumerable<ChronometerModel> Get()
@@ -31,19 +41,20 @@ namespace Chronometer.Controllers
 
         // POST api/<ChronometerController>
         [HttpPost]
-        public ChronometerModel Post()
+        public async Task<ChronometerModel> Post()
         {
             var model = ChronometerModelFactory.Create();
             if (!_chronometerServices.TryAdd(model.ID, new ChronometerService(model)))
             {
                 throw new Exception($"Timer with {model.ID} already exists");
             }
+            await _chronometerHubContext.Clients.All.SendAsync("Add", model.ID);
             return model;
         }
 
         // PUT api/<ChronometerController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] ChronometerModel value)
+        public async Task Put(int id, [FromBody] ChronometerModel value)
         {
             if (!_chronometerServices.ContainsKey(id))
             {
@@ -56,17 +67,19 @@ namespace Chronometer.Controllers
                     value.IsRunning
                 )
             );
+            await _chronometerHubContext.Clients.All.SendAsync("Update", id);
         }
 
         // DELETE api/<ChronometerController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
             if (!_chronometerServices.ContainsKey(id))
             {
                 throw new Exception($"Chronometer with id {id} does not exist");
             }
             _chronometerServices.Remove(id);
+            await _chronometerHubContext.Clients.All.SendAsync("Delete", id);
         }
     }
 }

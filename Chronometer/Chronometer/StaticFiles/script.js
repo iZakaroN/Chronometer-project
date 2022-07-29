@@ -1,5 +1,35 @@
 ﻿var timersDictionary = {};
-const route = "../api/chronometer/";
+const route = "../api/chronometer";
+let connection = new signalR.HubConnectionBuilder().withUrl('../chats').build();
+
+connection.start().then(() => { console.log('connected'); }).catch((err) => { console.log(err); })
+
+connection.on("Add", (id) => {
+    let messagesUl = document.querySelector('.messages-ul');
+    let newEl = document.createElement('li');
+
+    newEl.innerHTML = `Added timer:  ${id}`;
+
+    messagesUl.appendChild(newEl);
+})
+
+connection.on("Update", (id) => {
+    let messagesUl = document.querySelector('.messages-ul');
+    let newEl = document.createElement('li');
+
+    newEl.innerHTML = `Updated timer:  ${id}`;
+
+    messagesUl.appendChild(newEl);
+})
+
+connection.on("Delete", (id) => {
+    let messagesUl = document.querySelector('.messages-ul');
+    let newEl = document.createElement('li');
+
+    newEl.innerHTML = `Deleted timer: ${id}`;
+
+    messagesUl.appendChild(newEl);
+})
 
 function RefreshTimerValues(timer, chronoId) {
     timer.addEventListener('secondTenthsUpdated', () => {
@@ -47,7 +77,7 @@ function StartOrStopTimer(element) {
             IsRunning: true
         }
 
-        fetch(route + currentIdNum, {
+        fetch(route + '/' + currentIdNum, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -71,7 +101,7 @@ function StartOrStopTimer(element) {
             IsRunning: false
         }
 
-        fetch(route + currentIdNum, {
+        fetch(route + '/' + currentIdNum, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -103,7 +133,7 @@ function ResetTimer(element) {
         IsRunning: false
     }
 
-    fetch(route + currentIdNum, {
+    fetch(route + '/' + currentIdNum, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -121,7 +151,7 @@ function ResetTimer(element) {
     milisecondsElement.innerText = String(timer.getTimeValues().secondTenths).padStart(2, '0').substring(0, 1);
 }
 
-var AddChronometerUI = (chronometer) => {
+function AddChronometerUI(chronometer) {
     var div = document.createElement('div');
     div.setAttribute('id', `wrap${chronometer.id}`);
     div.setAttribute('class', `all-timer-info-wrap`);
@@ -162,11 +192,11 @@ var AddChronometerUI = (chronometer) => {
     }
 }
 
-var RemoveTimer = (element) => {
+function RemoveTimer(element) {
     element.parentNode.remove();
     timersDictionary[element.dataset.cid].stop();
     delete timersDictionary[element.dataset.cid];
-    fetch(route + element.dataset.cid, {
+    fetch(route + '/' + element.dataset.cid, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'

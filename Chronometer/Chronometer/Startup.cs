@@ -1,3 +1,4 @@
+using Chronometer.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -50,7 +51,15 @@ namespace Chronometer
             {
                 FileProvider = new PhysicalFileProvider(
                     Path.Combine(Directory.GetCurrentDirectory(), "StaticFiles")),
-                RequestPath = "/StaticFiles",
+                RequestPath = "/app",
+                EnableDefaultFiles = true
+            });
+
+            app.UseFileServer(new FileServerOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "lib")),
+                RequestPath = "/lib",
                 EnableDefaultFiles = true
             });
 
@@ -63,6 +72,7 @@ namespace Chronometer
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/chats");
             });
         }
     }

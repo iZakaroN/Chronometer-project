@@ -16,7 +16,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "StaticFiles/Chronoindex.html",
+      "launchUrl": "app/index.html",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -34,7 +34,7 @@
     "IIS": {
       "commandName": "IIS",
       "launchBrowser": true,
-      "launchUrl": "http://localhost/Chronometer/StaticFiles/index.html",
+      "launchUrl": "http://localhost/Chronometer/app/index.html",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
