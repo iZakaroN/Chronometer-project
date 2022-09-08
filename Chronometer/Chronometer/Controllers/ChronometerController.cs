@@ -48,7 +48,7 @@ namespace Chronometer.Controllers
             {
                 throw new Exception($"Timer with {model.ID} already exists");
             }
-            await _chronometerHubContext.Clients.All.SendAsync("Add", model.ID);
+            await _chronometerHubContext.Clients.All.SendAsync("Add", model);
             return model;
         }
 
@@ -67,7 +67,7 @@ namespace Chronometer.Controllers
                     value.IsRunning
                 )
             );
-            await _chronometerHubContext.Clients.All.SendAsync("Update", id);
+            await _chronometerHubContext.Clients.All.SendAsync("Update", value);
         }
 
         // DELETE api/<ChronometerController>/5
